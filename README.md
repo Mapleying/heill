@@ -103,6 +103,8 @@ cd frontend
 npm install
 ```
 
+> **Note:** The frontend uses a Next.js Route Handler (`app/api/chat/route.ts`) to proxy SSE from the FastAPI backend. Do not replace this with a `next.config.js` rewrite — rewrites buffer response bodies and will break streaming.
+
 ---
 
 ## Running
