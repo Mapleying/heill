@@ -1,0 +1,153 @@
+# Sport → aggregator URLs and CSS selectors for activity discovery
+# Selectors are wrapped in try/except; failures fall through to text extraction.
+
+tennis:
+  search_terms:
+    - "tennis camp"
+    - "tennis holiday"
+    - "tennis clinic"
+    - "tennis academy holiday"
+  aggregators:
+    - name: "LoveTennis"
+      url: "https://www.lovetennis.com/tennis-holidays/"
+      selectors:
+        container: ".holiday-card, .listing-item, article, .product"
+        title: "h2, h3, .holiday-title, .product-title"
+        price: ".price, [class*='price'], .cost"
+        dates: ".dates, [class*='date'], .when"
+        location: ".location, .destination"
+    - name: "TennisEscapes"
+      url: "https://tennisescapes.com/"
+      selectors:
+        container: ".tour, .camp, article, .product, .listing"
+        title: "h2, h3, .tour-title, .camp-name"
+        price: ".price, .from-price, [class*='price']"
+        dates: ".departure, .date, [class*='date']"
+        location: ".destination, .location"
+    - name: "TennisCompete"
+      url: "https://www.tenniscompete.com/tennis-camps/"
+      selectors:
+        container: ".camp-listing, .camp-card, article, .result"
+        title: "h2, h3, .camp-name, .title"
+        price: ".price, .camp-price, [class*='price']"
+        dates: ".dates, .camp-dates, [class*='date']"
+        location: ".location, .camp-location"
+
+surf:
+  search_terms:
+    - "surf camp"
+    - "surf retreat"
+    - "surfing holiday"
+    - "learn to surf holiday"
+  aggregators:
+    - name: "SurfHolidays"
+      url: "https://www.surfholidays.com/"
+      selectors:
+        container: ".camp-card, .listing, article, .result"
+        title: "h2, h3, .camp-name, .listing-title"
+        price: ".price, [class*='price']"
+        dates: ".dates, .availability"
+        location: ".location, .destination"
+    - name: "WaveTribe"
+      url: "https://wavetribe.com/collections/surf-camps"
+      selectors:
+        container: ".product-item, .camp-card, article, .grid-item"
+        title: ".product-title, h2, h3, .title"
+        price: ".product-price, .price, [class*='price']"
+        dates: ".dates, [class*='date']"
+        location: ".location, .destination"
+
+golf:
+  search_terms:
+    - "golf break"
+    - "golf holiday"
+    - "golf trip"
+    - "golf tour"
+  aggregators:
+    - name: "GolfBreaks"
+      url: "https://www.golfbreaks.com/en-gb/"
+      selectors:
+        container: ".deal-card, .package, article, .result-card"
+        title: "h2, h3, .deal-title, .package-name"
+        price: ".price, .from, [class*='price']"
+        dates: ".dates, .duration, [class*='date']"
+        location: ".destination, .location"
+    - name: "SportingBreaks"
+      url: "https://www.sportingbreaks.com/golf-breaks"
+      selectors:
+        container: ".break-card, .package, article, .result"
+        title: "h2, h3, .break-title, .package-name"
+        price: ".price, [class*='price']"
+        dates: ".dates, [class*='date']"
+        location: ".location, .destination"
+
+ski:
+  search_terms:
+    - "ski holiday"
+    - "ski trip"
+    - "ski break"
+    - "ski camp"
+    - "snowboard holiday"
+  aggregators:
+    - name: "IgluSki"
+      url: "https://www.igluski.com/"
+      selectors:
+        container: ".resort-card, .holiday-card, article, .deal"
+        title: "h2, h3, .resort-name, .holiday-name"
+        price: ".price, [class*='price']"
+        dates: ".dates, .departure, [class*='date']"
+        location: ".resort, .destination"
+    - name: "Neilson"
+      url: "https://www.neilson.co.uk/ski"
+      selectors:
+        container: ".holiday-card, .resort, article, .product"
+        title: "h2, h3, .holiday-name, .resort-name"
+        price: ".price, [class*='price']"
+        dates: ".dates, .availability, [class*='date']"
+        location: ".resort, .destination"
+
+football:
+  search_terms:
+    - "football tour"
+    - "football camp"
+    - "soccer camp"
+    - "football academy holiday"
+  aggregators:
+    - name: "SportsBreaks"
+      url: "https://www.sportsbreaks.com/football/"
+      selectors:
+        container: ".break-card, .package, article, .result"
+        title: "h2, h3, .break-name, .package-name"
+        price: ".price, [class*='price']"
+        dates: ".dates, [class*='date']"
+        location: ".destination, .location"
+
+padel:
+  search_terms:
+    - "padel camp"
+    - "padel holiday"
+    - "padel clinic"
+    - "padel break"
+  aggregators: []  # no major aggregators yet; falls through to search
+
+cycling:
+  search_terms:
+    - "cycling holiday"
+    - "cycling camp"
+    - "bike tour"
+    - "road cycling holiday"
+  aggregators: []
+
+yoga:
+  search_terms:
+    - "yoga retreat"
+    - "yoga holiday"
+    - "yoga camp"
+  aggregators: []
+
+running:
+  search_terms:
+    - "running camp"
+    - "running holiday"
+    - "marathon training camp"
+  aggregators: []

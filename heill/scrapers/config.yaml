@@ -1,0 +1,48 @@
+rate_limits:
+  default:
+    requests_per_minute: 10
+    retry_after_seconds: 6
+  booking.com:
+    requests_per_minute: 5
+    retry_after_seconds: 12
+  google.com:
+    requests_per_minute: 3
+    retry_after_seconds: 20
+  skyscanner.net:
+    requests_per_minute: 3
+    retry_after_seconds: 20
+
+user_agents:
+  - "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0.0.0 Safari/537.36"
+  - "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0.0.0 Safari/537.36"
+  - "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0.0.0 Safari/537.36"
+
+# SSRF guard: domains allowed for browsing
+allowed_domains:
+  - api.exchangerate-api.com
+  - serpapi.com
+  - html.duckduckgo.com
+  - duckduckgo.com
+  - tenniscompete.com
+  - rafanadalacademy.com
+  - lovetennis.com
+  - tennisescapes.com
+  - surfholidays.com
+  - wavetribe.com
+  - golfbreaks.com
+  - igluski.com
+  - neilson.co.uk
+  - fcbarcelona.com
+  - sportsbreaks.com
+  - sportingbreaks.com
+  - booking.com
+  - skyscanner.net
+  - google.com
+  - tripadvisor.com
+  - airbnb.com
+  - clubmed.com
+  - mark-warner.co.uk
+  - activeholidays.com
+
+playwright_timeout_ms: 30000
+httpx_timeout_seconds: 15
