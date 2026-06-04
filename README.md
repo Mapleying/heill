@@ -35,9 +35,9 @@ Heill browses live specialist websites at query time (tennis academies, surf cam
 
 ## Prerequisites
 
-- Python 3.12+
+- Python 3.12+ (on macOS: `brew install python@3.12`)
 - Node.js 18+
-- [Ollama](https://ollama.com/download) installed and running
+- [Ollama](https://ollama.com/download) — download the official installer, **not** `brew install ollama` (the Homebrew package is missing required binaries)
 - A [Supabase](https://supabase.com) project
 
 ---
@@ -90,7 +90,8 @@ ollama pull llama3.1:8b
 ### 5. Python backend
 
 ```bash
-python3.12 -m venv .venv
+# Use the Homebrew Python 3.12 explicitly (macOS ships with 3.9)
+/opt/homebrew/bin/python3.12 -m venv .venv
 source .venv/bin/activate
 pip install -e .
 ```
@@ -122,7 +123,7 @@ cd frontend
 npm run dev
 ```
 
-Open **http://localhost:3000** and start planning.
+Open **http://localhost:3000** (or `:3001` if 3000 is already in use — Next.js will print the actual URL in the terminal) and start planning.
 
 ---
 
