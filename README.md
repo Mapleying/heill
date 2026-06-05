@@ -1,8 +1,8 @@
 # Heill
 
-AI-powered sports travel agent. Plan complete sports holidays — flights, accommodation, and the activity itself — through a natural-language chat interface.
+AI-powered sports travel agent. Plan complete sports holidays — flights, accommodation, and the sporting activity itself — through a natural-language chat interface.
 
-Heill browses live specialist websites at query time (tennis academies, surf camps, ski operators) that standard travel APIs don't index.
+Activities are sourced from a curated catalogue (`heill/data/sportscations.yaml`) that you control. Add your available packages to the file and the agent will match and recommend them to users.
 
 ![Chat UI](https://placehold.co/800x400?text=Heill+Chat+UI)
 
@@ -10,12 +10,12 @@ Heill browses live specialist websites at query time (tennis academies, surf cam
 
 ## Features
 
-- **Sports activity discovery** — three-level funnel: curated registry → web search → LLM fallback
+- **Curated sportscation catalogue** — define available packages in `heill/data/sportscations.yaml`; no web scraping
+- **Natural language responses** — the agent replies conversationally, not with raw JSON
 - **Flights & accommodation** — scrapes Google Flights and Booking.com
 - **Exchange rates** — live currency conversion
 - **Streaming chat** — tokens stream to the UI as they're generated
-- **Tool status banners** — shows "Searching tennis camps in Spain…" in real time
-- **Itinerary cards** — structured flight + hotel + activity breakdown with source links
+- **Tool status banners** — shows "Searching sport activities…" in real time
 - **Session persistence** — conversation context stored in Supabase across turns
 
 ---
@@ -28,7 +28,8 @@ Heill browses live specialist websites at query time (tennis academies, surf cam
 | Backend | FastAPI (Python 3.12), streaming SSE |
 | Agent loop | Custom `heill/agent.py` — OpenAI-compatible tool use |
 | Session store | Supabase (PostgreSQL, JSONB) |
-| Scraping | httpx + BeautifulSoup (Tier 1), Playwright (Tier 2) |
+| Activity catalogue | `heill/data/sportscations.yaml` — YAML file you populate |
+| Scraping | httpx + BeautifulSoup (flights/accommodation), Playwright (fallback) |
 | Frontend | Next.js 14 + Tailwind CSS |
 
 ---
@@ -85,7 +86,7 @@ Or paste the contents of `supabase/migrations/001_sessions.sql` directly into th
 ollama pull llama3.1:8b
 ```
 
-> On 8 GB RAM, `llama3.2:3b` is faster but less accurate at following the itinerary JSON format.
+> On 8 GB RAM, `llama3.2:3b` is faster but less accurate at following natural language output instructions.
 
 ### 5. Python backend
 
@@ -129,9 +130,38 @@ Open **http://localhost:3000** (or `:3001` if 3000 is already in use — Next.js
 
 ---
 
+## Adding sportscation packages
+
+Edit `heill/data/sportscations.yaml` to add the packages you want to offer. Each entry looks like:
+
+```yaml
+- id: tennis-mallorca-001
+  sport: tennis
+  provider_name: "Mallorca Tennis Academy"
+  title: "Intensive Tennis Camp – Mallorca"
+  location: "Mallorca, Spain"
+  country: Spain
+  region: Balearic Islands
+  activity_type: camp          # camp | clinic | retreat | tour | course
+  skill_levels: [intermediate, advanced]
+  duration_days: 7
+  price_per_person: 1200
+  currency: EUR
+  includes_accommodation: false
+  dates:
+    - "2025-08-01 to 2025-08-07"
+  url: "https://yourwebsite.com/tennis-mallorca"
+  description: "7-day intensive tennis program on outdoor clay courts."
+  tags: [mallorca, spain, mediterranean]
+```
+
+The `tags` field helps with location matching — add nearby places or alternate spellings.
+
+---
+
 ## Example queries
 
-- *Tennis camp in Spain, August, budget £2000, flying from London, intermediate*
+- *Tennis camp in Shanghai, June 2026*
 - *Surf retreat in Portugal, beginner, 1 week in September*
 - *Golf break in Scotland, 4 nights, flying from Manchester*
 - *Ski holiday in the Alps, family of 3, February*
@@ -147,16 +177,17 @@ heill/
 │   ├── main.py               # FastAPI — /chat SSE, /sessions CRUD
 │   ├── session.py            # Supabase session CRUD
 │   ├── prompts.py            # System prompt
+│   ├── data/
+│   │   └── sportscations.yaml    # Curated activity catalogue — edit this to add packages
 │   ├── tools/
 │   │   ├── registry.py       # Tool dispatch + OpenAI function schemas
-│   │   ├── sport_activities.py  # Primary tool — 3-level discovery funnel
+│   │   ├── sport_activities.py  # Primary tool — looks up sportscations.yaml
 │   │   ├── web_search.py     # DuckDuckGo / SerpAPI
 │   │   ├── browse_page.py    # httpx + BS4 → Playwright fallback
 │   │   ├── flights.py        # Google Flights scraper
 │   │   ├── accommodation.py  # Booking.com scraper
 │   │   └── exchange_rate.py  # exchangerate-api.com
 │   └── scrapers/
-│       ├── sports_registry.yaml   # Sport → aggregator URLs + CSS selectors
 │       └── browser_pool.py        # Playwright async pool
 ├── frontend/
 │   ├── app/chat/             # Chat page + components
