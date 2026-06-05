@@ -99,9 +99,9 @@ TOOL_SCHEMAS = [
         "function": {
             "name": "find_sport_activities",
             "description": (
-                "PRIMARY TOOL. Find sports activity holidays, camps, retreats, and clinics. "
-                "Use this first for any sports travel query. Searches specialist aggregators and the web "
-                "to surface providers that standard travel sites don't cover."
+                "PRIMARY TOOL. Find sports activity holidays, camps, retreats, and clinics "
+                "from the curated catalogue of available packages. "
+                "Use this first for any sports travel query."
             ),
             "parameters": {
                 "type": "object",

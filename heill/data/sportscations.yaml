@@ -1,0 +1,124 @@
+# Sportscation catalogue — add your available packages here.
+#
+# Each entry can have:
+#   id              (string, unique identifier)
+#   sport           (string, e.g. tennis / surf / golf / ski / football / padel / cycling / yoga / running)
+#   provider_name   (string)
+#   title           (string)
+#   location        (string, free-text city/region e.g. "Mallorca, Spain")
+#   country         (string)
+#   region          (string, optional sub-region)
+#   activity_type   (camp | clinic | retreat | tour | course | any)
+#   skill_levels    (list: beginner / intermediate / advanced / all)
+#   duration_days   (integer)
+#   price_per_person (number, in `currency`)
+#   currency        (3-letter ISO code, e.g. GBP / EUR / USD)
+#   includes_accommodation (true | false)
+#   dates           (list of strings, e.g. "2025-07-01 to 2025-07-07")
+#   url             (string)
+#   description     (string)
+#   tags            (list of keywords for fuzzy location matching)
+
+- id: tennis-mallorca-001
+  sport: tennis
+  provider_name: "Mallorca Tennis Academy"
+  title: "Intensive Tennis Camp – Mallorca"
+  location: "Mallorca, Spain"
+  country: Spain
+  region: Balearic Islands
+  activity_type: camp
+  skill_levels: [intermediate, advanced]
+  duration_days: 7
+  price_per_person: 1200
+  currency: EUR
+  includes_accommodation: false
+  dates:
+    - "2025-07-01 to 2025-07-07"
+    - "2025-08-01 to 2025-08-07"
+    - "2025-09-01 to 2025-09-07"
+  url: "https://example.com/tennis-mallorca"
+  description: "7-day intensive tennis program with professional coaches on outdoor clay courts."
+  tags: [mallorca, spain, balearics, mediterranean]
+
+- id: surf-portugal-001
+  sport: surf
+  provider_name: "Algarve Surf School"
+  title: "Surf Camp Algarve"
+  location: "Algarve, Portugal"
+  country: Portugal
+  region: Algarve
+  activity_type: camp
+  skill_levels: [beginner, intermediate]
+  duration_days: 7
+  price_per_person: 950
+  currency: EUR
+  includes_accommodation: true
+  dates:
+    - "2025-06-15 to 2025-06-21"
+    - "2025-07-06 to 2025-07-12"
+    - "2025-08-03 to 2025-08-09"
+  url: "https://example.com/surf-algarve"
+  description: "All-inclusive surf week in Portugal's sunniest region. Accommodation and daily coaching included."
+  tags: [algarve, portugal, atlantic, sagres, lagos]
+
+- id: ski-alps-001
+  sport: ski
+  provider_name: "Alpine Ski Escapes"
+  title: "Ski Improvement Week – Chamonix"
+  location: "Chamonix, France"
+  country: France
+  region: French Alps
+  activity_type: clinic
+  skill_levels: [intermediate, advanced]
+  duration_days: 6
+  price_per_person: 1500
+  currency: EUR
+  includes_accommodation: false
+  dates:
+    - "2026-01-10 to 2026-01-16"
+    - "2026-02-07 to 2026-02-13"
+    - "2026-03-07 to 2026-03-13"
+  url: "https://example.com/ski-chamonix"
+  description: "Small-group ski coaching with BASI-qualified instructors in the Mont Blanc valley."
+  tags: [chamonix, france, alps, mont blanc, winter]
+
+- id: golf-scotland-001
+  sport: golf
+  provider_name: "Scottish Golf Breaks"
+  title: "St Andrews Golf Tour"
+  location: "St Andrews, Scotland"
+  country: Scotland
+  region: Fife
+  activity_type: tour
+  skill_levels: [all]
+  duration_days: 4
+  price_per_person: 800
+  currency: GBP
+  includes_accommodation: true
+  dates:
+    - "2025-05-15 to 2025-05-18"
+    - "2025-06-12 to 2025-06-15"
+    - "2025-09-11 to 2025-09-14"
+  url: "https://example.com/golf-st-andrews"
+  description: "Play the Old Course and other legendary St Andrews links. Hotel and tee times included."
+  tags: [st andrews, scotland, fife, uk, links]
+
+- id: tennis-shanghai-001
+  sport: tennis
+  provider_name: "Spintonic"
+  title: "Spintonic tennis camp in Shanghai"
+  location: "ShangHai, China"
+  country: China
+  region: Shanghai
+  activity_type: camp
+  skill_levels: [beginner, intermediate]
+  duration_days: 2
+  price_per_person: 1988
+  currency: RMB
+  includes_accommodation: false
+  dates:
+    - "2026-06-19 to 2026-06-20"
+    - "2026-06-20 to 2026-06-21"
+  url: "weixin://dl/business/?t=CrdXWyhQtyk"
+  description: "A 2 days tennis camp."
+  tags: [shanghai, china]
